@@ -42,42 +42,6 @@ vars:
   automate_dv.escape_char_right: '"'
   automate_dv.max_datetime: '9999-12-31 23:59:59.999999'
 
-  # datavault4dbt global variables, all set to default value
-  #Column Aliases
-  datavault4dbt.ldts_alias: 'ldts'
-  datavault4dbt.rsrc_alias: 'rsrc'
-  datavault4dbt.ledts_alias: 'ledts'
-  datavault4dbt.snapshot_trigger_column: 'is_active'
-  datavault4dbt.sdts_alias: 'sdts'
-  datavault4dbt.stg_alias: 'stg'
-  datavault4dbt.is_current_col_alias: 'IS_CURRENT'
-
-  #Hash Configuration
-  datavault4dbt.hash: 'MD5'
-  datavault4dbt.hash_datatype: 'STRING'
-  datavault4dbt.hashkey_input_case_sensitive: FALSE
-  datavault4dbt.hashdiff_input_case_sensitive: TRUE
-  
-  #Stage Configuration
-  datavault4dbt.copy_rsrc_ldts_input_columns: false  
-  
-  #Ghost Record Configuration  
-  datavault4dbt.beginning_of_all_times: {"bigquery":"0001-01-01T00-00-01","snowflake":"0001-01-01T00:00:01", "exasol": "0001-01-01 00:00:01"}
-  datavault4dbt.end_of_all_times: {"bigquery":"8888-12-31T23-59-59","snowflake":"8888-12-31T23:59:59", "exasol": "8888-12-31 23:59:59"}
-  datavault4dbt.timestamp_format: {"bigquery":"%Y-%m-%dT%H-%M-%S","snowflake":"YYYY-MM-DDTHH24:MI:SS", "exasol": "YYYY-mm-dd HH:MI:SS"}
-  datavault4dbt.default_unknown_rsrc: 'SYSTEM'
-  datavault4dbt.default_error_rsrc: 'ERROR'
-  datavault4dbt.rsrc_default_dtype: 'STRING'
-  datavault4dbt.stg_default_dtype: 'STRING'
-  datavault4dbt.derived_columns_default_dtype: STRING
-
-  #Datatype specific default values
-  datavault4dbt.error_value__STRING: '(error)'
-  datavault4dbt.error_value_alt__STRING: 'e'
-  datavault4dbt.unknown_value__STRING: '(unknown)'
-  datavault4dbt.unknown_value_alt__STRING: 'u'
-
-
 # Configuring seeds and models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -96,10 +60,3 @@ models:
       raw_vault:
         +materialized: incremental
         +schema: automate_dv
-    datavault4dbt:
-      stage:
-        +materialized: view
-        +schema: datavault4dbt
-      raw_vault:
-        +materialized: incremental
-        +schema: datavault4dbt
