@@ -1,0 +1,8 @@
+version: 2
+
+seeds:
+  - name: contacts
+    config:
+      column_types:
+        MODIFIEDDATE: TIMESTAMP
+        DATECREATED: TIMESTAMP

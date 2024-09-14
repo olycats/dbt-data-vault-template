@@ -1,0 +1,9 @@
+version: 2
+
+seeds:
+  - name: opportunities
+    config:
+      column_types:
+        MODIFIEDDATE: TIMESTAMP
+        DATECREATED: TIMESTAMP
+        CREATEDDATE: TIMESTAMP
