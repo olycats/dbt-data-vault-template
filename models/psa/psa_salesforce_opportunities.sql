@@ -1,27 +1,24 @@
+with
+    source as (select * from {{ source("salesforce", "opportunities") }}),
 
-with source as (
+    renamed as (
 
-    select * from {{ source('salesforce', 'opportunities') }}
+        select
 
-),
+            batchid,
+            oppurtunityid as opportunityid,
+            companextid as accountid,
+            amount,
+            project_name,
+            oppurtunity_name as opportunity_name,
+            stage,
+            close_date,
+            datecreated,
+            modifieddate
 
-renamed as (
+        from source
 
-    select
-    
-        BATCHID,
-        OPPURTUNITYID as OPPORTUNITYID,
-        COMPANEXTID as ACCOUNTID,
-        AMOUNT,
-        PROJECT_NAME,
-        OPPURTUNITY_NAME as OPPORTUNITY_NAME,
-        STAGE,
-        CLOSE_DATE,
-        DATECREATED,
-        MODIFIEDDATE
+    )
 
-    from source
-
-)
-
-select * from renamed
+select *
+from renamed

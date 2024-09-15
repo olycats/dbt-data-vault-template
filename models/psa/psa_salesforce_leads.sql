@@ -1,27 +1,24 @@
+with
+    source as (select * from {{ source("salesforce", "leads") }}),
 
-with source as (
+    renamed as (
 
-    select * from {{ source('salesforce', 'leads') }}
+        select
 
-),
+            batchid,
+            leadid,
+            contactid,
+            first_name,
+            last_name,
+            email,
+            company,
+            lead_status,
+            datecreated,
+            modifieddate
 
-renamed as (
+        from source
 
-    select
-    
-        BATCHID,
-        LEADID,
-        CONTACTID,
-        FIRST_NAME,
-        LAST_NAME,
-        EMAIL,
-        COMPANY,
-        LEAD_STATUS,
-        DATECREATED,
-        MODIFIEDDATE
+    )
 
-    from source
-
-)
-
-select * from renamed
+select *
+from renamed
